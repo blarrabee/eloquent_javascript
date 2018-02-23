@@ -96,7 +96,7 @@ var JOURNAL = [
 if (typeof module != "undefined" && module.exports)
   module.exports = JOURNAL;
   
- let journal = [];
+let journal = [];
 // Function for adding new entry to JOURNAL
 function addEntry(events, squirrel) {
   JOURNAL.push({events, squirrel});
@@ -140,6 +140,37 @@ function journalEvents(journal) {
 // console.log(journalEvents(JOURNAL));
 // → ["carrot", "exercise", "weekend", "bread", …]
 
+
+// This loop will print all correlations from our data 
+// Example (peanuts: 0.59026798116852)
 for (let event of journalEvents(JOURNAL)) {
   console.log(event + ":", phi(tableFor(event, JOURNAL)));
 }
+
+
+// Update loop with if statment to filter correlations with index greater 
+// that .1 and less than -.1
+for (let event of journalEvents(JOURNAL)) {
+  let correlation = phi(tableFor(event, JOURNAL));
+  if (correlation > 0.1 || correlation < -0.1) {
+    console.log(event + ":", correlation);
+  }
+}
+// → weekend:        0.1371988681
+// → brushed teeth: -0.3805211953
+// → candy:          0.1296407447
+// → work:          -0.1371988681
+// → spaghetti:      0.2425356250
+// → reading:        0.1106828054
+// → peanuts:        0.5902679812
+
+// Loop checking for two events on the same entry before combining
+// them and logging the correlation.
+for (let entry of JOURNAL) {
+  if (entry.events.includes("peanuts") &&
+     !entry.events.includes("brushed teeth")) {
+    entry.events.push("peanut teeth");
+  }
+}
+console.log(phi(tableFor("peanut teeth", JOURNAL)));
+// → 1
