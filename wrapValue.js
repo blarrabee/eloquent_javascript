@@ -7,5 +7,5 @@ var x = wrapper(2);
 var y = wrapper(44);
 
 
-console.log(wrapper(x));
-console.log(wrapper(y));
+console.log(x);
+console.log(y);
