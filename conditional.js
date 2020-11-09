@@ -19,5 +19,6 @@ while(counter < number){
   counter = counter + 1;
   console.log(counter);
 }
+return counter;
 }
-document.getElementByClass('show').innerHtml('counter');
+document.getElementById('show').innerHTML(counter);
