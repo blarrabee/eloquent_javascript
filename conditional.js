@@ -20,3 +20,4 @@ while(counter < number){
   console.log(counter);
 }
 }
+document.getElementByClass('show').innerHtml('counter');
