@@ -21,4 +21,17 @@ while(counter < number){
 }
 return counter;
 }
+
 document.getElementById('show').innerHTML(counter);
+
+let play = {
+  one{
+
+  }
+  two{
+
+  }
+  three{
+
+  }
+}
